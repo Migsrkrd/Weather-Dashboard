@@ -9,23 +9,7 @@ var searchButton = document.getElementById("searchButton");
 var textBoxInfo = document.getElementById("citySearch");
 var previousInput;
 
-function displayCity(){
-    previousInput = JSON.parse(localStorage.getItem("CityNameStringify"))
-    var currentDayUrlTest = "https://api.openweathermap.org/data/2.5/weather?q=".concat("",previousInput);
-    currentDayUrl = currentDayUrlTest.concat("","&units=imperial&appid=3ae49d92b8920f6ff808795cb04eb012")
-    var otherDaysUrlTest = "https://api.openweathermap.org/data/2.5/forecast?q=".concat("",previousInput);
-    otherDaysUrl = otherDaysUrlTest.concat("","&units=imperial&appid=3ae49d92b8920f6ff808795cb04eb012")
-    getCurrentAPI(currentDayUrl);
-    getDaysAPI(otherDaysUrl)
-}
-
-searchButton.addEventListener("click",function(event){
-    event.preventDefault()
-    var cityName = textBoxInfo.value
-    localStorage.setItem("CityNameStringify", JSON.stringify(cityName));
-    displayCity()
-    
-})
+displayCity();
 
 function getCurrentAPI(currentDayUrl){
     fetch(currentDayUrl)
@@ -151,4 +135,20 @@ function getDaysAPI(otherDaysUrl){
 
 }
 
+function displayCity(){
+    previousInput = JSON.parse(localStorage.getItem("CityNameStringify"))
+    var currentDayUrlTest = "https://api.openweathermap.org/data/2.5/weather?q=".concat("",previousInput);
+    currentDayUrl = currentDayUrlTest.concat("","&units=imperial&appid=3ae49d92b8920f6ff808795cb04eb012")
+    var otherDaysUrlTest = "https://api.openweathermap.org/data/2.5/forecast?q=".concat("",previousInput);
+    otherDaysUrl = otherDaysUrlTest.concat("","&units=imperial&appid=3ae49d92b8920f6ff808795cb04eb012")
+    getCurrentAPI(currentDayUrl);
+    getDaysAPI(otherDaysUrl)
+}
 
+searchButton.addEventListener("click",function(event){
+    event.preventDefault()
+    var cityName = textBoxInfo.value
+    localStorage.setItem("CityNameStringify", JSON.stringify(cityName));
+    displayCity()
+    
+})
