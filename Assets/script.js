@@ -8,6 +8,7 @@ var currentHum = $("#currentHum");
 var searchButton = document.getElementById("searchButton");
 var textBoxInfo = document.getElementById("citySearch");
 var previousInput;
+var extraButtons = document.getElementById("extraButtons")
 
 displayCity();
 
@@ -29,6 +30,15 @@ function getCurrentAPI(currentDayUrl){
         }
         else if(data.weather[0].description === "moderate rain"||data.weather[0].description === "light rain"||data.weather[0].description === "heavy rain"){
             iconDisplay = "🌧️"
+        }
+        else if(data.weather[0].description === "fog"){
+            iconDisplay = "🌫️"
+        }
+        else if(data.weather[0].description === "smoke"){
+            iconDisplay = "🔥😶‍🌫️🚒"
+        }
+        else if(iconDisplay === undefined){
+            iconDisplay = "🌡️"
         }
         currentDay.text( data.name + " " + dayjs().format("dddd MMM/DD/YYYY") + iconDisplay);
         currentTemp.text("Temperature: " + data.main.temp + " degrees F");
@@ -66,6 +76,15 @@ function getDaysAPI(otherDaysUrl){
         else if(data.list[4].weather[0].description === "moderate rain"||data.list[4].weather[0].description === "light rain"||data.list[4].weather[0].description === "heavy rain"){
             icon1 = "🌧️"
         }
+        else if(data.list[4].weather[0].description === "fog"){
+            icon1 = "🌫️"
+        }
+        else if(data.list[4].weather[0].description === "smoke"){
+            icon1 = "🔥😶‍🌫️🚒"
+        }
+        else if(icon1 === undefined){
+            icon1 = "🌡️"
+        }
         $("#dayOneHeader").text(data.list[4].dt_txt)
         $("#dayOneTemp").text("Temperature: " + data.list[4].main.temp + "degrees F")
         $("#dayOneWind").text("Wind: "+data.list[4].wind.speed+"mph")
@@ -80,6 +99,15 @@ function getDaysAPI(otherDaysUrl){
         }
         else if(data.list[12].weather[0].description === "moderate rain"||data.list[12].weather[0].description === "light rain"||data.list[12].weather[0].description === "heavy rain"){
             icon2 = "🌧️"
+        }
+        else if(data.list[12].weather[0].description === "fog"){
+            icon2 = "🌫️"
+        }
+        else if(data.list[12].weather[0].description === "smoke"){
+            icon2 = "🔥😶‍🌫️🚒"
+        }
+        else if(icon2 === undefined){
+            icon2 = "🌡️"
         }
         $("#dayTwoHeader").text(data.list[12].dt_txt)
         $("#dayTwoTemp").text("Temperature: " + data.list[12].main.temp + "degrees F")
@@ -96,6 +124,15 @@ function getDaysAPI(otherDaysUrl){
         else if(data.list[20].weather[0].description === "moderate rain"||data.list[20].weather[0].description === "light rain"||data.list[20].weather[0].description === "heavy rain"){
             icon3 = "🌧️"
         }
+        else if(data.list[20].weather[0].description === "fog"){
+            icon3 = "🌫️"
+        }
+        else if(data.list[20].weather[0].description === "smoke"){
+            icon3 = "🔥😶‍🌫️🚒"
+        }
+        else if(icon3 === undefined){
+            icon3 = "🌡️"
+        }
         $("#dayThreeHeader").text(data.list[20].dt_txt)
         $("#dayThreeTemp").text("Temperature: " + data.list[20].main.temp + "degrees F")
         $("#dayThreeWind").text("Wind: "+data.list[20].wind.speed+"mph")
@@ -111,6 +148,15 @@ function getDaysAPI(otherDaysUrl){
         else if(data.list[28].weather[0].description === "moderate rain"||data.list[28].weather[0].description === "light rain"||data.list[28].weather[0].description === "heavy rain"){
             icon4 = "🌧️"
         }
+        else if(data.list[28].weather[0].description === "fog"){
+            icon4 = "🌫️"
+        }
+        else if(data.list[28].weather[0].description === "smoke"){
+            icon4 = "🔥😶‍🌫️🚒"
+        }
+        else if(icon4 === undefined){
+            icon4 = "🌡️"
+        }
         $("#dayFourHeader").text(data.list[28].dt_txt)
         $("#dayFourTemp").text("Temperature: " + data.list[28].main.temp + "degrees F")
         $("#dayFourWind").text("Wind: "+data.list[28].wind.speed+"mph")
@@ -125,6 +171,15 @@ function getDaysAPI(otherDaysUrl){
         }
         else if(data.list[36].weather[0].description === "moderate rain"||data.list[36].weather[0].description === "light rain"||data.list[36].weather[0].description === "heavy rain"){
             icon5 = "🌧️"
+        }
+        else if(data.list[36].weather[0].description === "fog"){
+            icon5 = "🌫️"
+        }
+        else if(data.list[36].weather[0].description === "smoke"){
+            icon5 = "🔥😶‍🌫️🚒"
+        }
+        else if(icon5 === undefined){
+            icon5 = "🌡️"
         }
         $("#dayFiveHeader").text(data.list[36].dt_txt)
         $("#dayFiveTemp").text("Temperature: " + data.list[36].main.temp + "degrees F")
@@ -147,8 +202,19 @@ function displayCity(){
 
 searchButton.addEventListener("click",function(event){
     event.preventDefault()
-    var cityName = textBoxInfo.value
+    var cityName = textBoxInfo.value;
+    var newCityButton = document.createElement('button');
+    newCityButton.textContent = cityName;
+    extraButtons.append(newCityButton);
+        newCityButton.addEventListener("click", function(event){
+        event.preventDefault()
+        localStorage.setItem("CityNameStringify", JSON.stringify(cityName));
+        displayCity();
+    })
     localStorage.setItem("CityNameStringify", JSON.stringify(cityName));
-    displayCity()
+    displayCity();
     
 })
+
+
+

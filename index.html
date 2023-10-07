@@ -12,19 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="bg-primary p-2 text-light border border-3 border-dark">
+    <header class="bg-primary p-3 text-light border border-3 border-dark" style="width: 100%;">
         <h1>Weather Dashboard</h1>
     </header>
     <Main class="row">
-        <div class="card col-2 m-5 p-1 bg-primary-subtle border border-dark border-2">
+        <div class="card col-lg-2 m-5 p-1 bg-primary-subtle border border-dark border-2">
             <div id="searchBarBox" class="card-body cardBody">
                 <h5 class="card-title">City Search</h5>
                 <p class="card-text">Look up a city to find their current weather and forecast!</p>
                 <textarea name="ctySrch" id="citySearch" cols="20" rows="1"></textarea>
                 <button id="searchButton" class="btn btn-primary">Search & Add!</button>
+                <div id="extraButtons"></div>
+                <p>Refresh page to reset new buttons</p>
             </div>
         </div>
-        <section class="weatherContainer col m-5 p-2">
+        <section class="weatherContainer col-md m-5 p-2">
             <header id="currentHeader">
                 <h2 ID="currentDay"></h2>
             </header>
@@ -38,35 +40,35 @@
                     <h3 id="forecastHeader"></h3>
                 </header>
                 <div class="row" id="forecastInfo">
-                    <div class="col-2"id="firstForeDay">
+                    <div class="col-md-2"id="firstForeDay">
                         <h4 id="dayOneHeader"></h4>
                         <p id="dayOneTemp"></p>
                         <p id="dayOneWind"></p>
                         <p id="dayOneHum"></p>
                         <h5 id="dayOneIcon"></h5>
                     </div>
-                    <div class="col-2" id="secondForeDay">
+                    <div class="col-md-2" id="secondForeDay">
                         <h4 id="dayTwoHeader"></h4>
                         <p id="dayTwoTemp"></p>
                         <p id="dayTwoWind"></p>
                         <p id="dayTwoHum"></p>
                         <h5 id="dayTwoIcon"></h5>
                     </div>
-                    <div class="col-2" id="thirdForeDay">
+                    <div class="col-md-2" id="thirdForeDay">
                         <h4 id="dayThreeHeader"></h4>
                         <p id="dayThreeTemp"></p>
                         <p id="dayThreeWind"></p>
                         <p id="dayThreeHum"></p>
                         <h5 id="dayThreeIcon"></h5>
                     </div>
-                    <div class="col-2" id="fourthForeDay">
+                    <div class="col-md-2" id="fourthForeDay">
                         <h4 id="dayFourHeader"></h4>
                         <p id="dayFourTemp"></p>
                         <p id="dayFourWind"></p>
                         <p id="dayFourHum"></p>
                         <h5 id="dayFourIcon"></h5>
                     </div>
-                    <div class="col-2" id="fifthForeDay"> 
+                    <div class="col-md-2" id="fifthForeDay"> 
                         <h4 id="dayFiveHeader"></h4>
                         <p id="dayFiveTemp"></p>
                         <p id="dayFiveWind"></p>
