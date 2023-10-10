@@ -10,10 +10,8 @@ var textBoxInfo = document.getElementById("citySearch");
 var previousInput;
 var extraButtons = document.getElementById("extraButtons")
 
-displayCity();
-
-function getCurrentAPI(currentDayUrl){
-    fetch(currentDayUrl)
+function getCurrentAPI(request){
+    fetch(request)
     .then(function(response){
         return response.json();
     })
@@ -49,8 +47,8 @@ function getCurrentAPI(currentDayUrl){
 
 
 
-function getDaysAPI(otherDaysUrl){
-    fetch(otherDaysUrl)
+function getDaysAPI(request){
+    fetch(request)
     .then(function(response){
         return response.json();
 })
